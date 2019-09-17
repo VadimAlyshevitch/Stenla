@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+
+    function isNumber(inputStr) {
+        for (var i = 0; i < inputStr.length; i++) {
+            var oneChar = inputStr.charAt(i)
+            if (oneChar < '0' || oneChar > '9') {
+                alert('Вводите только положительное, целое число!')
+                return false
+            }
+        
+        }
+     //   for (let i = 0; i >= inputStr.length; i++){
+       //     if (oneChar < '0' || oneChar >= '10') {
+                
+         //   }
+       // }
+        alert(`${oneChar} целое число!`);
+        
+        for (let i = 0; i <= oneChar; i++) {
+            if (i % 2 == 0) {
+            alert(`${i} четное`);
+        } else if (i % 3 ==0) {
+            alert(`${i} нечетное`);
+        }
+    }
+        return true
+    }
+    
+
+
+
+    // функция проверки вводимого
+    function checkNumeric(fld) {
+        var inputStr = fld.value;
+        var fldName = fld.name;
+        var formName = fld.form.name;
+        if (isNumber(inputStr));
+    }
+     
+</script>
+</head>
+<body>
+    
+    <FORM NAME='entryForm' onSubmit='return false'>
+        Введите положительное число: <INPUT TYPE='text' NAME='numeric'>
+         
+        <INPUT TYPE='button' VALUE='Проверка' onClick='checkNumeric(this.form.numeric)'>
+        </FORM>
+
+    <script src="main.js"></script>
+</body>
+</html>
