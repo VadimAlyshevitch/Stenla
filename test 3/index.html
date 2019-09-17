@@ -5,10 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Очередная хуйна на жс</title>
-    
+    <script language ="JavaScript">
+        
+        function run(s){
+        
+        var str=document.forms[0].write_t;
+       
+        var strLengths = str.map(function(n){
+        
+          return n.length;
+       
+        });
+        
+        var minLengths = str.filter(function(n) {
+        
+          return n.length == Math.min.apply(null, strLengths);
+       
+        });
+       
+         
+        
+        el.value='Короткие слова : '+minLengths;
+        
+        }
+        
+        </script>
+        
 </head>
 <body>
-    
+
+        
+        <p> <font size="4"> Введите текст: </font></p>
+        
+        <textarea name="read_t" cols="50" rows="10"></textarea> <br>
+        
+        <textarea name="write_t" cols="50" rows="5"></textarea> <br>
+        
+        <input type="button" name="Run" value="Запуск" onClick="run(this.form.read_t.value)">
+
+
+        
 
 
     <script src="main.js"></script>

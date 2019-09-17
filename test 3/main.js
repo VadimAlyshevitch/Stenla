@@ -10,7 +10,7 @@ var result = string.replace(reg, function(str) {
 
 console.log(result);
 
-*/
+
 
 let arr = [];
 
@@ -19,4 +19,4 @@ let text = prompt("Введите текст")
 arr.push(text);
 
 alert(text.length);
-
+*/
