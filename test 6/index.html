@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Задача 6</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        const MAX_WEIGHT = 4
+
+        const things = [
+            {
+                name: 'Фонарик',
+                price: 1 ,
+                weight: 1,   
+            },
+            {
+                name: 'Спички',
+                price: 10 ,
+                weight: 4,   
+            },
+            {
+                name: 'Котелок',
+                price: 1,
+                weight: 1,   
+            },
+            {
+                name: 'Кошка',
+                price: 4,
+                weight: 1,   
+            },
+            {
+                name: 'Нож',
+                price: 1,
+                weight: 1,   
+            },
+        ]
+
+        // рекурсия и все дела
+// прогон под то, чтобы ценность вещей была по фулу в рюкзаке
+        const showMaxPrice = (things, maxWeght) => {
+            let maxPrice = 0
+            let weight = 0
+            
+            const findMaxPrice = (addedThings, notAddedThings) => { // 1 уже добавлены, 2 который остался
+                for(let i = 0; i < notAddedThings.length; i++) { // проходим по всем не добавленным вевщам
+                    const thingToAdd = notAddedThings[i]
+                    if (addedThings.concat([thingToAdd]).reduce((a, e) => a + e.weight, 0) <= maxWeght) { // берем вещь и пытаемся ее добавитью.reduce((a, e) => a + e.weight, 0) <= maxWeght) если рюкзак забит или там осталось еще место
+                        const price = findMaxPrice(addedThings.concat([thingToAdd]), notAddedThings.filter(t => t !== thingToAdd)) // к уже добавленным вещам прибавляем новую. notAddedThings.filter(t => t !== thingToAdd) пытаемся поместить другие вещи
+                        if (price > maxPrice) {
+                            maxPrice = price
+                            weight = addedThings.concat([thingToAdd]).reduce((a, e) => a + e.weight, 0) //concat смешывает два массива reduce вызывает этот массив и в нем уже смотрим вес
+                        }
+                        //ыreturn price
+                    } else {
+                        const price = addedThings.reduce((a, e) => a + e.price, 0) // проходит по массиву с объектами и суммирует все его цены
+                        if (price > maxPrice) {
+                            maxPrice = price
+                            weight = addedThings.reduce((a, e) => a + e.weight, 0) // вес, где а это куда это суммирует, 0 - по умолчанию что будет в а
+                        }
+                        //return price // если вещь не влезла, то ее не помещаем в рюкзак
+                    }
+                }
+
+            }
+
+            findMaxPrice([], things)
+
+            return [maxPrice, weight]
+        }
+
+        const [maxPrice, weight] = showMaxPrice(things, MAX_WEIGHT)
+
+        console.log('Максимально возможная цена: ' + maxPrice + ', ' + 'вес: ' + weight)
+
+
+    </script>
+</body>
+</html>

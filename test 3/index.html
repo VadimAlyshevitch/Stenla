@@ -4,44 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Очередная хуйна на жс</title>
-    <script language ="JavaScript">
-        
-        function run(s){
-        
-        var str=document.forms[0].write_t;
-       
-        var strLengths = str.map(function(n){
-        
-          return n.length;
-       
-        });
-        
-        var minLengths = str.filter(function(n) {
-        
-          return n.length == Math.min.apply(null, strLengths);
-       
-        });
-       
-         
-        
-        el.value='Короткие слова : '+minLengths;
-        
+    <title>3 задача</title>
+    <script>
+        const $ = document.querySelector.bind(document)
+
+
+
+        function run(){
+          const input = document.querySelector('#input')
+          const output = document.querySelector('#output')
+
+          const text  = input.value
+          const words = text.split(' ')
+          const sortedWords = words.sort()
+          const capitlizedWords = []
+          const wordLenght = words.lenght;
+          for (let i = 0; i < words.length; i++) {
+            const word = words[i]
+            capitlizedWords.push(word[0].toUpperCase() + word.slice(1))
+          }
+
+          output.innerHTML = `
+            <h2>Отсортированные слова:</h2>
+            <p>${sortedWords.join(' ')}</p>
+
+            <h2>Слова с большой первой буквой:</h2>
+            <p>${capitlizedWords.join(' ')}</p>
+          `
         }
-        
+
         </script>
         
 </head>
 <body>
 
         
-        <p> <font size="4"> Введите текст: </font></p>
+        <p> Введите текст: </p>
         
-        <textarea name="read_t" cols="50" rows="10"></textarea> <br>
+        <textarea name="read_t" cols="50" rows="10" id="input"></textarea> <br>
         
-        <textarea name="write_t" cols="50" rows="5"></textarea> <br>
+        <div style="border: 2px solid black; width: 300px; height: 250px;" id="output"></div> <br>
         
-        <input type="button" name="Run" value="Запуск" onClick="run(this.form.read_t.value)">
+        <input type="button" name="Run" value="Запуск" onClick="run()">
 
 
         

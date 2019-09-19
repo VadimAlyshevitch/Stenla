@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>1 задача</title>
     <script>
 
-
+/*
     function isNumber(inputStr) {
         for (var i = 0; i < inputStr.length; i++) {
             var oneChar = inputStr.charAt(i)
@@ -39,10 +39,45 @@
 
     // функция проверки вводимого
     function checkNumeric(fld) {
+
         var inputStr = fld.value;
         var fldName = fld.name;
         var formName = fld.form.name;
         if (isNumber(inputStr));
+    }
+
+    function isSimple(number) {
+        for(let i = 2; i < number; i++) {
+            if (number % i === 0) return false
+        }
+        return true
+    }
+    */
+
+    function run() {
+        const numeric = document.getElementById('numeric')
+        const value = numeric.value
+        const number = Number(value)
+
+        if (value.indexOf('.') !== -1) {
+            alert('Число дробное')
+        } else {
+            alert('Число целое')
+        }
+
+        if (number % 2 === 0) {
+            alert('Число четное')
+        } else {
+            alert('Число нечётное')
+        }
+
+        if (isSimple(number)) {
+            alert('Число простое')
+        } else {
+            alert('Число составное')
+        }
+
+        
     }
      
 </script>
@@ -50,11 +85,11 @@
 <body>
     
     <FORM NAME='entryForm' onSubmit='return false'>
-        Введите положительное число: <INPUT TYPE='text' NAME='numeric'>
+        Введите положительное число: <INPUT TYPE="number" id="numeric" NAME='numeric'>
          
-        <INPUT TYPE='button' VALUE='Проверка' onClick='checkNumeric(this.form.numeric)'>
+        <INPUT TYPE='button' VALUE='Проверка' onClick='run()'>
         </FORM>
 
-    <script src="main.js"></script>
+    <!-- <script src="main.js"></script> -->
 </body>
 </html>

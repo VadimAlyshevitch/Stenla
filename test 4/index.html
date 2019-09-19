@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Задача 4</title>
+</head>
+<body>
+    
+
+    <p>Введите текст</p>
+
+    <textarea name="" id="input" cols="30" rows="10"></textarea>
+
+    <p>Введите слово для поиска</p>
+
+    <input type="text" id="wordInput">
+
+    <div id="output"></div>
+
+    <script>
+
+        const $ = document.querySelector.bind(document)
+
+        $('#input').addEventListener('keyup', event => {
+
+            const userWord = document.querySelector('#wordInput').value
+
+            if (!userWord) return
+
+            const text = event.target.value
+            const words = text.split(' ')
+
+            let counter = 0
+            for (let i = 0; i < words.length; i++) {
+                const textWord = words[i]
+                if (textWord.toLowerCase() === userWord.toLowerCase()) counter++
+            }
+
+            $('#output').innerHTML = `
+                <p>Слово ${userWord} встречается в этом тексте ровно ${counter} раз</p>
+            `
+
+        })
+
+    </script>
+</body>
+</html>

@@ -12,20 +12,27 @@ function NOD(a, b){
 function NOK(a, b){
     return (Math.abs(a * b)/NOD(a, b));
 }
-// не работает проверка
-function check() {
-    if(typeof a != 'number'|| typeof b != 'number')
-    {
-        alert('poshel nahui')
+
+function check(a, b) {
+    if(
+        (typeof a != 'number'|| typeof b != 'number')
+        || isNaN(a)
+        || isNaN(b)
+    ) {
+        return false
     }
-    return
+    return true
 }
 
-let a = Number(prompt("Enter A:"));
-let b = Number(prompt("Enter B:"));
+let a = Number(prompt("Введите A:"));
+let b = Number(prompt("Введите B:"));
+
+if (!check(a,b)) {
+    alert('Некорректный ввод')
+} else {
+    alert ('NOK: ' + NOK(a, b));
+    alert ('NOD: ' + NOD(a, b));
+}
 
 
-alert ('NOK: ' + NOK(a, b));
-alert ('NOD: ' + NOD(a, b));
 
-check(a,b);

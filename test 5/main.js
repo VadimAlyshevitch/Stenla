@@ -1,5 +1,5 @@
 const isPalindrome =  (string) => {
-    if (string == string.split('').reverse().join('') || string.lenght <= 100 ) {
+    if (string == string.split('').reverse().join('') && string.lenght <= 100 ) {
         alert(string + ' Число палиндром.');
     }
     else {
